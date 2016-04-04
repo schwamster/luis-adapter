@@ -22,5 +22,8 @@
   "homepage": "https://github.com/schwamster/luis#readme",
   "devDependencies": {
     "mocha": "^2.4.5"
+  },
+  "dependencies": {
+    "request": "^2.69.0"
   }
 }
