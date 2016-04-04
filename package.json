@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/schwamster/luis/issues"
   },
-  "homepage": "https://github.com/schwamster/luis#readme"
+  "homepage": "https://github.com/schwamster/luis#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
 }
