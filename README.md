@@ -1,4 +1,4 @@
-# luis
+# luis-adapter
 
 ##install
 
