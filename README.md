@@ -23,7 +23,7 @@ var luisAdapter = new LuisAdapter(options);
     function(data){
       console.log(data);
       },
-    funciton(error){
+    function(error){
       console.log(error);
       });
 
