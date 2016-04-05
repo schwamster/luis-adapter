@@ -10,21 +10,30 @@ describe('luis-adapter', function() {
       var LuisAdapter = require("../index");
       var luisAdapter = new LuisAdapter(options);
 
-      assert.equal(options.appId, luisAdapter.AppId());
-      assert.equal(options.subscriptionKey, luisAdapter.SubscriptionKey());
+      assert.equal(options.appId, luisAdapter.GetAppId());
+      assert.equal(options.subscriptionKey, luisAdapter.GetSubscriptionKey());
     });
   });
 
   describe('query', function () {
-    it('query with valid appid and subscriptionKey', function () {
+    it('query with valid appid and subscriptionKey', function (done) {
 
       var options = {};
-      options.appId = "abc";
-      options.subscriptionKey = "123"
+      options.appId = "c413b2ef-382c-45bd-8ff0-f76d60e2a821";
+      options.subscriptionKey = process.env.LuisSubscriptionKey;
+      var query = "set up an appointment at 2:00 pm tomorrow for 90 minutes called discuss budget";
       var LuisAdapter = require("../index");
       var luisAdapter = new LuisAdapter(options);
-
-      assert.equal("some answer", luisAdapter.Query());
+      luisAdapter.Query(query, function(data){
+          assert.equal("builtin.intent.calendar.create_calendar_entry", data.intents[0].intent);
+          //todo flacky - should not test againts index x but check if ONE of the
+          //entities equals the expected
+          assert.equal("2:00 pm", data.entities[0].entity);
+          assert.equal("builtin.calendar.start_time", data.entities[0].type);
+          assert.equal("tomorrow", data.entities[1].entity);
+          assert.equal("builtin.calendar.start_date", data.entities[1].type);
+          done();
+      })
     });
   });
 });
