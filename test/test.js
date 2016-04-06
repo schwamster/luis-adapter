@@ -28,6 +28,9 @@ describe('luis-adapter', function() {
       var LuisAdapter = require("../index");
       var luisAdapter = new LuisAdapter(options);
       luisAdapter.Query(query, function(data){
+
+          var intent = luisAdapter.GetIntent(data);
+          assert.equal("builtin.intent.calendar.create_calendar_entry", intent);
           assert.equal("builtin.intent.calendar.create_calendar_entry", data.intents[0].intent);
           //todo flacky - should not test againts index x but check if ONE of the
           //entities equals the expected
