@@ -26,6 +26,23 @@ LuisAdapter.prototype.Query = function(query, callback, error) {
   });
 };
 
+LuisAdapter.prototype.GetIntent = function(luisResponse) {
+  var bestMatch, i, intent, len, ref;
+  bestMatch = null;
+
+  try {
+    ref = luisResponse["intents"];
+    for (i = 0, len = ref.length; i < len; i++) {
+      intent = ref[i];
+      if ((bestMatch == null) || intent.score > bestMatch.score) {
+        bestMatch = intent;
+      }
+    }
+  } catch (undefined) {}
+
+  return bestMatch != null ? bestMatch.intent : void 0;
+};
+
 LuisAdapter.prototype.GetAppId = function() {
     return this.appId;
 };

@@ -1,0 +1,24 @@
+{
+  "query": "run run on run",
+  "intents": [
+    {
+      "intent": "RunTests"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "run",
+      "type": "Test",
+      "startIndex": 4,
+      "endIndex": 6,
+      "score": 0.775277436
+    },
+    {
+      "entity": "run",
+      "type": "Environment",
+      "startIndex": 11,
+      "endIndex": 13,
+      "score": 0.74859786
+    }
+  ]
+}

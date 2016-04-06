@@ -1,4 +1,7 @@
 var assert = require('assert');
+var fs = require('fs');
+
+
 
 describe('luis-adapter', function() {
   describe('init', function () {
@@ -36,4 +39,47 @@ describe('luis-adapter', function() {
       })
     });
   });
+
+  describe('GetIntent', function () {
+    it('should return the best matching intent returned from luis', function () {
+
+      var options = {};
+      options.appId = "abc";
+      options.subscriptionKey = "123"
+      var LuisAdapter = require("../index");
+      var luisAdapter = new LuisAdapter(options);
+      var mockLuisResponse = JSON.parse(fs.readFileSync("./test/mockResponse.json", 'utf8'));
+
+      assert.equal("RunTests", luisAdapter.GetIntent(mockLuisResponse));
+    });
+  });
+
+  describe('GetIntent - no intent', function () {
+    it('should return the best matching intent returned from luis', function () {
+
+      var options = {};
+      options.appId = "abc";
+      options.subscriptionKey = "123"
+      var LuisAdapter = require("../index");
+      var luisAdapter = new LuisAdapter(options);
+      var mockLuisResponse = JSON.parse(fs.readFileSync("./test/mockResponseNoIntent.json", 'utf8'));
+
+      assert.equal(null, luisAdapter.GetIntent(mockLuisResponse));
+    });
+  });
+
+  describe('GetIntent - one intent', function () {
+    it('should return the best matching intent returned from luis', function () {
+
+      var options = {};
+      options.appId = "abc";
+      options.subscriptionKey = "123"
+      var LuisAdapter = require("../index");
+      var luisAdapter = new LuisAdapter(options);
+      var mockLuisResponse = JSON.parse(fs.readFileSync("./test/mockResponseOneIntent.json", 'utf8'));
+
+      assert.equal("RunTests", luisAdapter.GetIntent(mockLuisResponse));
+    });
+  });
+
 });

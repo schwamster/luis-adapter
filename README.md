@@ -5,7 +5,6 @@ to get you started with luis (Language Understanding Intelligent Service) visit 
 page https://www.luis.ai/
 
 
-
 ##install
 
 npm install luis-adapter
@@ -21,6 +20,7 @@ var luisAdapter = new LuisAdapter(options);
 
   luisAdapter.Query(query,
     function(data){
+      console.log "Luis thinks this is your intent:" + luisAdapter.GetIntent(data);
       console.log(data);
       },
     function(error){
