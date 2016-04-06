@@ -20,7 +20,7 @@ var luisAdapter = new LuisAdapter(options);
 
   luisAdapter.Query(query,
     function(data){
-      console.log "Luis thinks this is your intent:" + luisAdapter.GetIntent(data);
+      console.log("Luis thinks this is your intent:" + luisAdapter.GetIntent(data));
       console.log(data);
       },
     function(error){
