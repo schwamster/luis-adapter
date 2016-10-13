@@ -20,7 +20,7 @@ LuisAdapter.prototype.query = function(query, callback, error) {
         callback ? callback(JSON.parse(body)) : resolve(JSON.parse(body));
       } else {
         console.log(err);
-        error ? error(err, response.statusCode) : reject(err, response ? resonse.statusCode : void 0);
+        error ? error(err, response.statusCode) : reject(err, response ? response.statusCode : void 0);
       }
     });
   });
