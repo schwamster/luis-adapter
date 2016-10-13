@@ -3,6 +3,9 @@ var request = require("request");
 function LuisAdapter(options) {
   this.appId = options.appId;
   this.subscriptionKey = options.subscriptionKey;
+  
+  this.baseUrl = "https://api.projectoxford.ai/luis";
+  this.ApiVersion = "v1";
 }
 
 LuisAdapter.prototype.query = function(query, callback, error) {
