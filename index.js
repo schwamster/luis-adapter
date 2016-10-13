@@ -5,7 +5,7 @@ function LuisAdapter(options) {
   this.subscriptionKey = options.subscriptionKey;
 }
 
-LuisAdapter.prototype.Query = function(query, callback, error) {
+LuisAdapter.prototype.query = function(query, callback, error) {
   var url = `${this.baseUrl}/${this.ApiVersion}/application`
   var parameter = {"id": this.appId, "subscription-key": this.subscriptionKey, q: query};
   return new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ LuisAdapter.prototype.Query = function(query, callback, error) {
   });
 };
 
-LuisAdapter.prototype.GetIntent = function(luisResponse) {
+LuisAdapter.prototype.getIntent = function(luisResponse) {
   var bestMatch, i, intent, len, ref;
   bestMatch = null;
 
@@ -40,11 +40,11 @@ LuisAdapter.prototype.GetIntent = function(luisResponse) {
   return bestMatch != null ? bestMatch.intent : void 0;
 };
 
-LuisAdapter.prototype.GetAppId = function() {
+LuisAdapter.prototype.getAppId = function() {
     return this.appId;
 };
 
-LuisAdapter.prototype.GetSubscriptionKey = function() {
+LuisAdapter.prototype.getSubscriptionKey = function() {
     return this.subscriptionKey;
 };
 
