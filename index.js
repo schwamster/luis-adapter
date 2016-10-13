@@ -8,16 +8,18 @@ function LuisAdapter(options) {
 LuisAdapter.prototype.Query = function(query, callback, error) {
   var url = `${this.baseUrl}/${this.ApiVersion}/application`
   var parameter = {"id": this.appId, "subscription-key": this.subscriptionKey, q: query};
-  request.get({url:url, qs:parameter}, function(err, response, body) {
-    if (!err && response.statusCode == 200){
-      callback(JSON.parse(body));
-    }
-    else {
-      //console.log(response.request.uri.href);
-      //console.log(response.body);
-      console.log(err);
-      error(err, response.statusCode);
-    }
+  return new Promise((resolve, reject) => {
+    request.get({
+      url: url,
+      qs: parameter
+    }, function (err, response, body) {
+      if (!err && response.statusCode == 200) {
+        callback ? callback(JSON.parse(body)) : resolve(JSON.parse(body));
+      } else {
+        console.log(err);
+        error ? error(err, response.statusCode) : reject(err, response ? resonse.statusCode : void 0);
+      }
+    });
   });
 };
 
