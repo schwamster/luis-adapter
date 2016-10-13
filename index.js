@@ -1,5 +1,4 @@
 var request = require("request");
-var sprintf = require("sprintf-js").sprintf;
 
 function LuisAdapter(options) {
   this.appId = options.appId;
@@ -11,7 +10,7 @@ function LuisAdapter(options) {
 }
 
 LuisAdapter.prototype.Query = function(query, callback, error) {
-  var url = sprintf(this.urlFormat, this.baseUrl, this.ApiVersion);
+  var url = `${this.baseUrl}/${this.ApiVersion}`
   var parameter = {"id": this.appId, "subscription-key": this.subscriptionKey, q: query};
   request.get({url:url, qs:parameter}, function(err, response, body) {
     if (!err && response.statusCode == 200){
