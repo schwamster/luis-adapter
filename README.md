@@ -10,22 +10,22 @@ page https://www.luis.ai/
 npm install luis-adapter
 
 ##usage
-var LuisAdapter = require("luis-adapter");
+    var LuisAdapter = require("luis-adapter");
 
-var options = {appId: "c413b2ef-382c-45bd-8ff0-f76d60e2a821", subscriptionKey: "#YOURSUBSCRIPTIONKEY#"};
+    var options = {appId: "c413b2ef-382c-45bd-8ff0-f76d60e2a821", subscriptionKey: "#YOURSUBSCRIPTIONKEY#"};
 
-var query = "set up an appointment at 2:00 pm tomorrow for 90 minutes called discuss budget";
+    var query = "set up an appointment at 2:00 pm tomorrow for 90 minutes called discuss budget";
 
-var luisAdapter = new LuisAdapter(options);
+    var luisAdapter = new LuisAdapter(options);
 
-  luisAdapter.Query(query,
-    function(data){
-      console.log("Luis thinks this is your intent:" + luisAdapter.GetIntent(data));
-      console.log(data);
-      },
-    function(error){
-      console.log(error);
-      });
+      luisAdapter.Query(query,
+        function(data){
+          console.log("Luis thinks this is your intent:" + luisAdapter.GetIntent(data));
+          console.log(data);
+          },
+        function(error){
+          console.log(error);
+          });
 
 
 ##Tests

@@ -1,32 +1,32 @@
 var request = require("request");
-var sprintf = require("sprintf-js").sprintf;
 
 function LuisAdapter(options) {
   this.appId = options.appId;
   this.subscriptionKey = options.subscriptionKey;
-
+  
   this.baseUrl = "https://api.projectoxford.ai/luis";
   this.ApiVersion = "v1";
-  this.urlFormat = "%1$s/%2$s/application";
 }
 
-LuisAdapter.prototype.Query = function(query, callback, error) {
-  var url = sprintf(this.urlFormat, this.baseUrl, this.ApiVersion);
+LuisAdapter.prototype.query = function(query, callback, error) {
+  var url = `${this.baseUrl}/${this.ApiVersion}/application`
   var parameter = {"id": this.appId, "subscription-key": this.subscriptionKey, q: query};
-  request.get({url:url, qs:parameter}, function(err, response, body) {
-    if (!err && response.statusCode == 200){
-      callback(JSON.parse(body));
-    }
-    else {
-      //console.log(response.request.uri.href);
-      //console.log(response.body);
-      console.log(err);
-      error(err, response.statusCode);
-    }
+  return new Promise((resolve, reject) => {
+    request.get({
+      url: url,
+      qs: parameter
+    }, function (err, response, body) {
+      if (!err && response.statusCode == 200) {
+        callback ? callback(JSON.parse(body)) : resolve(JSON.parse(body));
+      } else {
+        console.log(err);
+        error ? error(err, response.statusCode) : reject(err, response ? response.statusCode : void 0);
+      }
+    });
   });
 };
 
-LuisAdapter.prototype.GetIntent = function(luisResponse) {
+LuisAdapter.prototype.getIntent = function(luisResponse) {
   var bestMatch, i, intent, len, ref;
   bestMatch = null;
 
@@ -43,11 +43,11 @@ LuisAdapter.prototype.GetIntent = function(luisResponse) {
   return bestMatch != null ? bestMatch.intent : void 0;
 };
 
-LuisAdapter.prototype.GetAppId = function() {
+LuisAdapter.prototype.getAppId = function() {
     return this.appId;
 };
 
-LuisAdapter.prototype.GetSubscriptionKey = function() {
+LuisAdapter.prototype.getSubscriptionKey = function() {
     return this.subscriptionKey;
 };
 
