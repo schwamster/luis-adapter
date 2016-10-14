@@ -1,6 +1,6 @@
 {
   "name": "luis-adapter",
-  "version": "0.1.00",
+  "version": "0.1.01",
   "description": "query your msft luis ai app",
   "main": "./distribution/index.js",
   "scripts": {
