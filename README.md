@@ -10,7 +10,7 @@ page https://www.luis.ai/
 npm install luis-adapter
 
 ##usage
-    var LuisAdapter = require("luis-adapter");
+    var LuisAdapter = require("luis-adapter").LuisAdapter;
 
     var options = {appId: "c413b2ef-382c-45bd-8ff0-f76d60e2a821", subscriptionKey: "#YOURSUBSCRIPTIONKEY#"};
 
@@ -29,8 +29,22 @@ npm install luis-adapter
 
 
 ##Tests
-
 mocha is used for testing.
 
 to run the test u need to set an environmentvariable named LuisSubscriptionKey
 to your own luis subscription.
+
+then run npm run test
+
+##Contributing & Building
+Everybody is welcome to contribute to this project. I will resolve pull requests as soon as possible.
+Source files are in Typescript in the src folder, so you will need to install typescript.
+
+
+##Breaking Changes
+Since version 0.0.52 some things have changed:
+- methods now follow js conventions -> GetIntent => getIntent...
+- there is no default export anymore -> so in es5 import: 
+    var LuisAdapter = require("luis-adapter").LuisAdapter;
+instead of
+    var LuisAdapter = require("luis-adapter");

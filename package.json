@@ -1,10 +1,12 @@
 {
   "name": "luis-adapter",
-  "version": "0.0.52",
+  "version": "0.1.00",
   "description": "query your msft luis ai app",
-  "main": "index.js",
+  "main": "./distribution/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "test": "mocha",
+    "prepublish": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/schwamster/luis#readme",
   "devDependencies": {
+    "bluebird": "^3.4.6",
     "mocha": "^2.4.5"
   },
   "dependencies": {
