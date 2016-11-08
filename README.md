@@ -18,9 +18,9 @@ npm install luis-adapter
 
     var luisAdapter = new LuisAdapter(options);
 
-      luisAdapter.Query(query,
+      luisAdapter.query(query,
         function(data){
-          console.log("Luis thinks this is your intent:" + luisAdapter.GetIntent(data));
+          console.log("Luis thinks this is your intent:" + luisAdapter.getIntent(data));
           console.log(data);
           },
         function(error){
