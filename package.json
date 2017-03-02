@@ -26,6 +26,8 @@
     "mocha": "^2.4.5"
   },
   "dependencies": {
+    "@types/bluebird": "~3.0.0",
+    "@types/node": "~6.0.60",
     "request": "^2.69.0",
     "bluebird": "^3.4.7"
   }
