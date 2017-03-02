@@ -1,6 +1,6 @@
 # luis-adapter
 
-[![npm version](https://badge.fury.io/js/luis-adapter.svg)]
+![npm version](https://badge.fury.io/js/luis-adapter.svg)
 
 
 this is an inoffcial luis api client that helps u to integrate luis into your application.
