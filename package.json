@@ -1,6 +1,6 @@
 {
   "name": "luis-adapter",
-  "version": "0.1.02",
+  "version": "0.1.03",
   "description": "query your msft luis ai app",
   "main": "./dist/index.js",
   "scripts": {
@@ -23,10 +23,10 @@
   },
   "homepage": "https://github.com/schwamster/luis#readme",
   "devDependencies": {
-    "bluebird": "^3.4.6",
     "mocha": "^2.4.5"
   },
   "dependencies": {
-    "request": "^2.69.0"
+    "request": "^2.69.0",
+    "bluebird": "^3.4.7"
   }
 }
