@@ -1,5 +1,7 @@
 # luis-adapter
 
+[![npm version](https://badge.fury.io/js/%40luis-adapter%2Fcore.svg)](https://badge.fury.io/js/%40luis-adapter%2Fcore)
+
 this is an inoffcial luis api client that helps u to integrate luis into your application.
 to get you started with luis (Language Understanding Intelligent Service) visit the follwing
 page https://www.luis.ai/
